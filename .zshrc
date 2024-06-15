@@ -23,7 +23,7 @@ function lazygit() {
 }
 
 function update() {
-    bash ~/Code/pop_os_config/update_system.sh
+    bash ~/Code/pop_os_config/helpers/update_system.sh
 }
 
 function phps() {
