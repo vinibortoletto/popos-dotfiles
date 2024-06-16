@@ -20,4 +20,11 @@ echo_done
 echo_doing 'Finishing settings up'
 cp -r backgrounds ~/Pictures
 cp -r fonts/ dictionaries/ ~/.local/share
+
+# Set workspace only on primary monitor
+gsettings set org.gnome.mutter workspaces-only-on-primary true
+
+# Remove Gnome animations
+gsettings set org.gnome.desktop.interface enable-animations false
+
 echo_done
