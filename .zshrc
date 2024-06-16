@@ -84,9 +84,9 @@ function locate() {
     done
 
     if [[ -n "$filename" ]]; then
-        find ~ -type f -name "*$filename*"
+        find ~ -type f -name "*$filename*" | fzf | xargs -r code
     elif [[ -n "$directory" ]]; then
-        find ~ -type d -name "*$directory*"
+        cd $(find ~ -type d -name "*$directory*" | fzf)
     else
         echo "Please specify either -f for filename or -d for directory."
         return 1
@@ -99,19 +99,29 @@ function locate() {
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 
-# Alias
+# Nala aliases
 alias ns='nala search'
 alias nu='sudo nala update && sudo nala upgrade -y'
 alias nr='sudo nala purge -y'
 alias ni='sudo nala install -y'
-alias n='nano'
 
-# Power commands
-alias bye='poweroff'
-alias brb='reboot'
+# Flatpak aliases
+alias fpi='flatpak install -y'
+alias fps='flatpak search'
+alias fpr='flatpak uninstall -y'
+alias fpl='flatpak list'
+
+# System aliases
+alias n='nano'
+alias c='cp'
+alias cf='cp -r'
+alias rmf='rm -rf'
+alias ff='find ~ -type f | fzf | xargs -r code'
+alias fd='cd $(find ~ -type d | fzf)'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Created by `pipx` on 2024-06-16 05:48:18
 export PATH="$PATH:/home/vini/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
