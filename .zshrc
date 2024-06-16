@@ -123,6 +123,5 @@ alias open='xdg-open'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Created by `pipx` on 2024-06-16 05:48:18
-export PATH="$PATH:/home/vini/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
