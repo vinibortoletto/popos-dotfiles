@@ -13,4 +13,7 @@ gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
 gsettings set org.gnome.desktop.background picture-uri file:///home/vini/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
 gsettings set org.gnome.desktop.background picture-uri-dark file:///home/vini/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
 
+# Swap Win key with Alt key
+gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win']"
+
 echo_done
