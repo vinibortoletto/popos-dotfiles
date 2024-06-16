@@ -84,7 +84,7 @@ function locate() {
     done
 
     if [[ -n "$filename" ]]; then
-        find ~ -type f -name "*$filename*" | fzf | xargs -r code
+        find ~ -type f -name "*$filename*" | fzf | xargs -r xdg-open
     elif [[ -n "$directory" ]]; then
         cd $(find ~ -type d -name "*$directory*" | fzf)
     else
@@ -116,8 +116,9 @@ alias n='nano'
 alias c='cp'
 alias cf='cp -r'
 alias rmf='rm -rf'
-alias ff='find ~ -type f | fzf | xargs -r code'
+alias ff='find ~ -type f | fzf | xargs -r xdg-open'
 alias fd='cd $(find ~ -type d | fzf)'
+alias open='xdg-open'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
