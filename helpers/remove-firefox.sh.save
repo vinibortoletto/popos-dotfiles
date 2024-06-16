@@ -1,7 +1,0 @@
-echo_doing 'Removing Firefox'
-
-sudo nala purge firefox -y
-rm -rf ~/.mozilla
-rm -rf ~/.cache/mozilla
-
-echo_done
