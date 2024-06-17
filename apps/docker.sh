@@ -1,43 +1,39 @@
 #!/bin/bash
 
-echo_doing 'Installing Docker Desktop'
+# Uninstall conflicting packages
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Install prerequisites
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
 
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
+# Add Docker's official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-# URL of the Docker Desktop Debian package
-DOCKER_DESKTOP_URL="https://desktop.docker.com/linux/main/amd64/149282/docker-desktop-4.30.0-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64"
+# Set up the stable repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/pop_os $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-# Filename for the downloaded Debian package
-DEB_FILE="docker-desktop-4.30.0-amd64.deb"
+# Install Docker Engine
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Download the Debian package
-wget -O "$DEB_FILE" "$DOCKER_DESKTOP_URL"
+# Enable Docker to start on boot
+sudo systemctl enable docker
 
-# Install the Debian package using dpkg
-sudo dpkg -i "$DEB_FILE"
+# Verify Docker installation
+sudo systemctl is-active docker
 
-# Remove the downloaded Debian package
-rm "$DEB_FILE"
+# Add current user to the Docker group
+sudo usermod -aG docker ${USER}
 
-echo_done
+# Log out and log back in for the group changes to take effect
 
-
-
-echo_doing 'Installing Docker Compose'
-
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# Install Docker Compose
+COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+sudo curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-echo_done
+# Verify Docker Compose installation
+docker compose version
+
+sudo nala update
