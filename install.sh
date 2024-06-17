@@ -21,7 +21,7 @@ echo_doing 'Updating installed apps'
 sudo nala upgrade -y
 echo_done
 
-for setting in ./settings/*.sh; do souce $setting; done
+for setting in ./settings/*.sh; do source $setting; done
 
 echo_doing 'Finishing settings up'
 cp -r backgrounds ~/Pictures
