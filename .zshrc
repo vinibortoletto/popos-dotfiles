@@ -27,7 +27,7 @@ function lazygit() {
 }
 
 function update() {
-    bash ~/Code/pop_os_config/helpers/update_system.sh
+    bash ~/popos-dotfiles/update_system.sh
 }
 
 function phps() {
@@ -119,9 +119,19 @@ alias rmf='rm -rf'
 alias ff='find ~ -type f | fzf | xargs -r xdg-open'
 alias fd='cd $(find ~ -type d | fzf)'
 alias open='xdg-open'
+alias s='grep -rin'
+alias c='rsync --progress'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
