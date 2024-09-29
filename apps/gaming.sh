@@ -1,7 +1,6 @@
 if [ "$installation_type" == "Desktop" ]; then
 	echo_doing 'Installing Steam'
-	flatpak install com.valvesoftware.Steam -y
-	sudo nala install steam-devices -y
+	sudo nala install steam steam-devices -y
 	echo_done
 
 	echo_doing 'Installing PCSX2'
