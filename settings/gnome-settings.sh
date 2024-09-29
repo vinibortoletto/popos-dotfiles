@@ -10,10 +10,16 @@ gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
 
 # Set background
-gsettings set org.gnome.desktop.background picture-uri file:///home/vini/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/vini/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
+gsettings set org.gnome.desktop.background picture-uri file:///home/$USER/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$USER/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
 
 # Swap Win key with Alt key
 gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win']"
+
+# Enable night light
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3700
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from 6.0
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to 6.0
 
 echo_done
