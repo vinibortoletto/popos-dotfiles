@@ -10,8 +10,8 @@ gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.wm.preferences focus-mode mouse
 
 # Set background
-gsettings set org.gnome.desktop.background picture-uri file:///home/$USER/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$USER/Pictures/backgrounds/conscious-design-mpRtviiLfMk-unsplash.jpg
+gsettings set org.gnome.desktop.background picture-uri file:///home/$USER/Pictures/backgrounds/pexels-pixabay-458983.jpg
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/$USER/Pictures/backgrounds/pexels-pixabay-458983.jpg
 
 # Swap Win key with Alt key
 gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win']"
