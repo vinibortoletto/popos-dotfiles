@@ -28,3 +28,6 @@ cp -r backgrounds ~/Pictures
 cp -r fonts/ dictionaries/ ~/.local/share
 
 echo_done
+
+source ./reboot_prompt.sh
+
