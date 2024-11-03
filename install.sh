@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Download config repository
-git clone https://github.com/vinibortoletto/popos-dotfiles
-cd popos-dotfiles
-
 # Ensure computer doesn't go to sleep or lock while installing
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 gsettings set org.gnome.desktop.session idle-delay 0
