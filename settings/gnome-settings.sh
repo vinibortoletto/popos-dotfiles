@@ -22,4 +22,7 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 37
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from 6.0
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to 6.0
 
+# Disable left control pointer location
+gsettings set org.gnome.desktop.interface locate-pointer false
+
 echo_done
