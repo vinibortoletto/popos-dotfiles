@@ -16,7 +16,7 @@ echo_done
 
 echo_doing 'Removing Libre Office'
 
-sudo apt purge -y libreoffice-core
+sudo apt purge -y libreoffice-core libreoffice-common
 
 echo_done
 
