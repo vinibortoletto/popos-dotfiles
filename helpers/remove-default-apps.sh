@@ -12,3 +12,11 @@ rm -rf ~/.cache/mozilla
 
 echo_done
 
+
+
+echo_doing 'Removing Libre Office'
+
+sudo apt purge -y libreoffice-core
+
+echo_done
+
