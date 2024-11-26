@@ -1,0 +1,12 @@
+[Unit]
+Description=Display Setup
+After=graphical.target
+
+[Service]
+ExecStart=/home/vinicius/popos-dotfiles/scripts/monitor.sh
+User=vinicius
+Environment=DISPLAY=:0
+Type=oneshot
+
+[Install]
+WantedBy=default.target

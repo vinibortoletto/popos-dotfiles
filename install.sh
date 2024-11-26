@@ -26,6 +26,7 @@ for setting in ./settings/*.sh; do source $setting; done
 echo_doing 'Finishing settings up'
 cp -r backgrounds ~/Pictures
 cp -r fonts/ dictionaries/ ~/.local/share
+source ./scripts/configure-displays.sh
 
 echo_done
 
