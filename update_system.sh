@@ -2,7 +2,6 @@
 source ~/popos-dotfiles/helpers/functions.sh
 
 echo_doing 'Updating apt'
-sudo nala fetch --auto -y
 sudo nala upgrade -y
 echo_done
 
