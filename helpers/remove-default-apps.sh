@@ -1,11 +1,11 @@
 echo_doing 'Removing default apps'
 
-sudo apt purge -y \ 
+sudo apt purge -y \
 	firefox \
 	geary \
 	eog \
 	totem \
-	pop-shop 
+	pop-shop \
 	libreoffice-core \
 	libreoffice-common
 
