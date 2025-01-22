@@ -8,7 +8,6 @@ for helper in ./helpers/*.sh; do source $helper; done
 
 echo_doing 'Installing Nala'
 sudo apt install nala -y
-sudo nala fetch --auto -y
 echo_done
 
 echo_doing 'Updating system'
