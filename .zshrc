@@ -60,38 +60,38 @@ function checkport() {
     sudo netstat -tunpl | grep $1
 }
 
-function locate() {
-    local filename=""
-    local directory=""
+# function locate() {
+#     local filename=""
+#     local directory=""
 
-    while getopts ":f:d:" opt; do
-        case ${opt} in
-            f)
-                filename="$OPTARG"
-                ;;
-            d)
-                directory="$OPTARG"
-                ;;
-            \?)
-                echo "Invalid option: -$OPTARG" >&2
-                return 1
-                ;;
-            :)
-                echo "Option -$OPTARG requires an argument." >&2
-                return 1
-                ;;
-        esac
-    done
+#     while getopts ":f:d:" opt; do
+#         case ${opt} in
+#             f)
+#                 filename="$OPTARG"
+#                 ;;
+#             d)
+#                 directory="$OPTARG"
+#                 ;;
+#             \?)
+#                 echo "Invalid option: -$OPTARG" >&2
+#                 return 1
+#                 ;;
+#             :)
+#                 echo "Option -$OPTARG requires an argument." >&2
+#                 return 1
+#                 ;;
+#         esac
+#     done
 
-    if [[ -n "$filename" ]]; then
-        find ~ -type f -name "*$filename*" | fzf | xargs -r xdg-open
-    elif [[ -n "$directory" ]]; then
-        cd $(find ~ -type d -name "*$directory*" | fzf)
-    else
-        echo "Please specify either -f for filename or -d for directory."
-        return 1
-    fi
-}
+#     if [[ -n "$filename" ]]; then
+#         find ~ -type f -name "*$filename*" | fzf | xargs -r xdg-open
+#     elif [[ -n "$directory" ]]; then
+#         cd $(find ~ -type d -name "*$directory*" | fzf)
+#     else
+#         echo "Please specify either -f for filename or -d for directory."
+#         return 1
+#     fi
+# }
 
 
 
@@ -104,6 +104,7 @@ alias ns='nala search'
 alias nu='sudo nala update && sudo nala upgrade -y'
 alias nr='sudo nala purge -y'
 alias ni='sudo nala install -y'
+alias nl='nala list --installed'
 
 # Flatpak aliases
 alias fpi='flatpak install -y'
@@ -121,6 +122,7 @@ alias fd='cd $(find ~ -type d | fzf)'
 alias open='xdg-open'
 alias s='grep -rin'
 alias c='rsync --progress'
+alias gnome-restart='gnome-session-quit --logout --no-prompt'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
